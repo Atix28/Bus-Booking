@@ -27,7 +27,7 @@ class Bus extends Component{
     render(){
         return(
          <div>
-                <h1>List Of Busses</h1>
+              <h2><u>List of Busses</u></h2>
                 {
                     this.state.busses && 
                     this.state.busses.map(  bus =>{
@@ -45,7 +45,7 @@ class Bus extends Component{
                                          <p> No of Seats      : {bus.bseat}   </p>
                                                 </div>
                                          <div class="card-action">
-                                          <a href="#">This is a link</a>
+                                          <a href="#">See Time Table</a>
                                             </div>
                                         </div>
                                         </div>

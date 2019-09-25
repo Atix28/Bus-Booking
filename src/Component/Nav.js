@@ -11,7 +11,7 @@ class Nav extends Component{
                 <Link to='/' class="brand-logo center">NTB Booking</Link>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><Link to='/'>HOME</Link></li>
+        <li><Link to='/Book'>HOME</Link></li>
         <li><Link to='/'>BOOK</Link></li>
         <li><Link to='/Bus'>TIME TABLE</Link></li>
         <li><Link to='/Bus'>CONTACT US</Link></li>
