@@ -13,8 +13,8 @@ class Nav extends Component{
       <ul class="right hide-on-med-and-down">
         <li><Link to='/'>HOME</Link></li>
         <li><Link to='/'>BOOK</Link></li>
-        <li><a href="badges.html">TIME TABLE</a></li>
-        <li><a href="collapsible.html">CONTACT US</a></li>
+        <li><Link to='/Bus'>TIME TABLE</Link></li>
+        <li><Link to='/Bus'>CONTACT US</Link></li>
         
       </ul>
     </div>

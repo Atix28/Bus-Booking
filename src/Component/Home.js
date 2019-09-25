@@ -26,7 +26,7 @@ class Home extends Component {
     <br/>
       
   </Card.Text>
-    <Link to="/book"><Button className="btn green darken-3">Buy Ticket</Button></Link>
+    <Link to="/book"><Button className="btn green darken-3">Book</Button></Link>
   </Card.Body>
 </Card>
 
