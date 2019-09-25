@@ -34,14 +34,12 @@ class Bus extends Component{
                         return(
                             <div class="row">
                                 <div class="col s12 m7">
-                                     <div class="card">
-                                        <div class="card-image">
-                                         <img src="images/sample-1.jpg"/>
-                                         <span class="card-title">Card Title</span>
-                                         </div>
-                                         <div class="card-content">
-                                         <p> Name of the Bus : {bus.bname}   </p>
-                                         <p> Name of the Bus : {bus.bname}   </p>
+                                <div class="card blue-grey darken-1">
+                                                                 
+                                        <div class="card-content white-text">
+                                        <span class="card-title">{bus.bname} &nbsp;{bus.bno}</span>
+                                       
+                                         <p>   </p>
                                          <p> Bus Number      : {bus.bno}     </p>
                                          <p> Bus Ticket Price: {bus.bprice}  </p>
                                          <p> No of Seats      : {bus.bseat}   </p>

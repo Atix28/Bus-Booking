@@ -8,10 +8,11 @@ class Nav extends Component{
             <div>
                 <nav className="green darken-3">
                 <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">NTB Booking</a>
+                <Link to='/' class="brand-logo center">NTB Booking</Link>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">BOOK</a></li>
+        <li><Link to='/'>HOME</Link></li>
+        <li><Link to='/'>BOOK</Link></li>
         <li><a href="badges.html">TIME TABLE</a></li>
         <li><a href="collapsible.html">CONTACT US</a></li>
         
