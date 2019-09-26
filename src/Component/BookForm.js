@@ -4,27 +4,62 @@ import { Link } from 'react-router-dom';
 
 
 
-class Book extends Component{
-    state = {
-        busses: null
+class BookForm extends Component{
+    constructor(props){
+        super(props);
+    
+    this.state = {
+        Total:'',
+        busses: '',
+        check:''
     }
+    this.getBus = this.getBus.bind(this);
+
+
+}
 
     componentDidMount(){
+
+        this.getBus();
+    }
+    
+    getBus(){
+        const busno = this.props.match.params.bno;
 
         console.log('Mounted')
         db.collection('Buses')
           .get()
           .then(    snapshot => {
               const busses = []
+              const check =[]
               snapshot.forEach( doc =>{
+              
                   const data = doc.data()
+                  
+                  check.push(data)
+               
                   busses.push(data)
+                  
+                  
+                
               })
-              this.setState({   busses: busses})
+             
+              this.setState({   busses: busses,
+                                 check: check})
+              
               console.log(snapshot)
+              console.log(check)
+              console.log(this.state.busses.bno)
+              console.log(busno)
+              
+              
+             
           })
           .catch(   error => console.log(error))
-    } 
+    }
+
+    
+    
     render(){
         return(
             <div>
@@ -33,8 +68,8 @@ class Book extends Component{
             
           <Link className="btn green darken-3" to  ="/">Back</Link>
 
-       
-
+          
+            <h3>444</h3>
           <form>
           <ul className="collection">
             <li className="collection-item"> Book </li>
@@ -78,4 +113,4 @@ class Book extends Component{
 
 }
 
-export default Book;
+export default BookForm;

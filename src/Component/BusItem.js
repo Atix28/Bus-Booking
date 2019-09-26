@@ -10,7 +10,7 @@ class BusItem extends Component{
     }
     render(){
         return(
-           // <li className = "collection-item"> <Link to={`/booklist/${this.state.item.bno}`} >{this.state.item.bname}</Link></li>
+           // <li className = "collection-item"> <Link to={`/booklist/${this.state.item.bno}`} >{this.state.item.bname}</Link></li>         <Link to ={`/bookform/${this.state.item.bno}`}>BOOK</Link>
            <div class="row">
            <div class="col s12 m7">
            <div class="card blue-grey darken-1">
@@ -24,7 +24,7 @@ class BusItem extends Component{
                     <p> No of Seats      : {this.state.item.bseat}   </p>
                            </div>
                     <div class="card-action">
-                     <Link to ='/book'>BOOK</Link>
+                    <Link to ={`/bookform/${this.state.item.bno}`}>BOOK</Link>
                        </div>
                    </div>
                    </div>

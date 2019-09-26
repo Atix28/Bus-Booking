@@ -7,9 +7,12 @@ class Bus extends Component{
     state = {
         busses: null
     }
-
     componentDidMount(){
 
+        this.getBus();
+    }
+    
+    getBus(){
         console.log('Mounted')
         db.collection('Buses')
           .get()
@@ -23,7 +26,7 @@ class Bus extends Component{
               console.log(snapshot)
           })
           .catch(   error => console.log(error))
-    } 
+    }
     render(){
         return(
          <div>

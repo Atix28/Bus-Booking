@@ -14,6 +14,10 @@ class BookList extends Component{
     
     componentDidMount(){
 
+        this.getBus();
+    }
+    
+    getBus(){
         console.log('Mounted')
         db.collection('Buses')
           .get()
@@ -27,7 +31,7 @@ class BookList extends Component{
               console.log(snapshot)
           })
           .catch(   error => console.log(error))
-    } 
+    }
 
 
   
@@ -39,7 +43,7 @@ class BookList extends Component{
         const BusItems = this.state.busses && 
         this.state.busses.map(  bus =>{ 
             return(
-               <BusItem key={bus.id}  item={bus}/>
+               <BusItem key={bus.bno}  item={bus}/>
             )
         })
         return(
