@@ -11,8 +11,8 @@ class Nav extends Component{
                 <Link to='/' class="brand-logo center">NTB Booking</Link>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><Link to='/Book'>HOME</Link></li>
-        <li><Link to='/'>BOOK</Link></li>
+        <li><Link to='/'>HOME</Link></li>
+        <li><Link to='/booklist'>BOOK</Link></li>
         <li><Link to='/Bus'>TIME TABLE</Link></li>
         <li><Link to='/Bus'>CONTACT US</Link></li>
         
@@ -20,9 +20,10 @@ class Nav extends Component{
     </div>
       
     <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">BOOK</a></li>
-    <li><a href="badges.html">TIME TABLE</a></li>
-    <li><a href="collapsible.html">CONTACT US</a></li>
+    <li><Link to='/'>HOME</Link></li>
+        <li><Link to='/booklist'>BOOK</Link></li>
+        <li><Link to='/Bus'>TIME TABLE</Link></li>
+        <li><Link to='/Bus'>CONTACT US</Link></li>
     
   </ul>
    
