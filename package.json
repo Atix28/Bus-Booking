@@ -1,9 +1,9 @@
 {
+  "homepage": "https://atix28.github.io/Bus-Booking/",
   "name": "bus_booking",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Atix28.github.io/Bus-Booking",
-  "dependencies": {
+   "dependencies": {
     "axios": "^0.18.0",
     "body": "^5.1.0",
     "bootstrap": "^4.3.1",
