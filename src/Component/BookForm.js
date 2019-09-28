@@ -12,7 +12,7 @@ class BookForm extends Component{
         Total:'',
         busses: '',
         check:'',
-        busno : this.props.match.params.bno,
+        bno : this.props.match.params.bno,
         bprice : this.props.match.params.bprice,
         date : this.refs.date
     }
@@ -82,7 +82,7 @@ class BookForm extends Component{
             <h3>Booking Details</h3>
           <form>
           <ul className="collection">
-            <li className="collection-item">Bus Number : <b><h5>{this.state.busno}</h5></b> </li>
+            <li className="collection-item">Bus Number : <b><h5>{this.state.bno}</h5></b> </li>
             <li className="collection-item">
                 
                 
@@ -109,7 +109,7 @@ class BookForm extends Component{
             </li>
             
           </ul>
-          <Link to={{pathname: `/cardpayment/${this.state.busno}/${this.state.bprice}`, Total, Date  }} ><button className="btn green">Book<i className="material-icons right">send</i></button></Link> &nbsp;
+          <Link to={{pathname: `/cardpayment/${this.state.bno}/${this.state.bprice}`, Total}} ><button className="btn green">Book<i className="material-icons right">send</i></button></Link> &nbsp;
          
           </form>
       </div>

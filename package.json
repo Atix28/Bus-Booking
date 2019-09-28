@@ -2,6 +2,7 @@
   "name": "bus_booking",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://github.com/Atix28/Bus-Booking",
   "dependencies": {
     "axios": "^0.18.0",
     "body": "^5.1.0",
@@ -11,6 +12,7 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "firebase": "^6.6.2",
+    "gh-pages": "^2.1.1",
     "mdbreact": "^4.13.0",
     "nodemailer": "^6.1.1",
     "react": "^16.9.0",
@@ -22,6 +24,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

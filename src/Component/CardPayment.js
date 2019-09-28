@@ -7,8 +7,10 @@ class CardPayment extends Component {
         super(props);
 
         this.state = {
-            Total: this.props.location.Total,
-            Date : this/props.location.Date,
+            Total   : this.props.location.Total,
+            bno : this.props.match.params.bno,
+            bprice : this.props.match.params.bprice,
+            tno    : ( this.props.location.Total / this.props.match.params.bprice),
             REACT_APP_EMAILJS_USERID: 'user_17Y3yksLiJyYnOXq04djD',
             templateId: 'template_IldEFUEB',
             receiverEmail: '',
@@ -17,7 +19,9 @@ class CardPayment extends Component {
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.sendFeedback = this.sendFeedback.bind(this);
-        this.addPaymentDetails = this.addPaymentDetails.bind(this);
+        console.log(this.state.Total)
+        console.log(this.state.bno)
+        console.log(this.state.bprice)
     }
 
     onSubmit(event) {
@@ -29,7 +33,13 @@ class CardPayment extends Component {
             lname: this.refs.lname.value,
             email: this.refs.email.value,
             postcode: this.refs.postcode.value,
-            cost: this.props.location.Total
+            cost: this.props.location.Total,
+            Total   : this.props.location.Total,
+            bno : this.props.match.params.bno,
+            
+            
+
+            
         }
         
         
@@ -37,6 +47,7 @@ class CardPayment extends Component {
         const { templateId, receiverEmail } = this.state;
         
         console.log(feedback, 'onSubmit')
+        
         
 
             this.sendFeedback(
@@ -46,7 +57,11 @@ class CardPayment extends Component {
                 this.state.feedback,
                 this.refs.lname.value,
                 this.refs.fname.value,
+                this.state.bno,
+                this.state.bprice,
+                this.state.tno,
                 feedback.cost
+               
                 
 
 
@@ -56,12 +71,12 @@ class CardPayment extends Component {
                 formSubmitted: true
             });
             
-            this.addPaymentDetails(feedback);
+           
         
     }
     
     
-    sendFeedback(templateId, senderEmail, receiverEmail, feedback,lname,fname,cost,Date) {
+    sendFeedback(templateId, senderEmail, receiverEmail, feedback,lname,fname,bno,bprice,tno,cost) {
         window.emailjs
             .send('mailgun', templateId, {
                 senderEmail,
@@ -69,13 +84,18 @@ class CardPayment extends Component {
                 feedback,
                 lname,
                 fname,
-                cost,
-                Date
+                bno,
+                bprice,
+                tno,
+                cost
+               
                 
                 
             })
             .then(res => {
                 console.log('MAIL SENT!')
+                alert('Booking confirmed, Check your Mail :)')
+                this.props.history.push('/');
                 this.setState({
                     formEmailSent: true
                 });
@@ -84,17 +104,13 @@ class CardPayment extends Component {
             .catch(err => console.error('Failed to send feedback. Error: ', err));
     }
 
-    addPaymentDetails(userdetail) {
-        
-        
-           
-        
-    }
+    
 
     render() {
 
 
         const { Total } = this.state;
+        const { date  } = this.state;
 
 
 
@@ -165,7 +181,7 @@ class CardPayment extends Component {
                                 <div className="input-field col s12">
 
                                     <input disabled value={"Your Total : " + Total + " LKR"} id="disabled" name="cost" type="text" className="validate" />
-
+                                   
                                 </div>
                             </li>
 
