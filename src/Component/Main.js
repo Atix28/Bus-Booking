@@ -4,6 +4,7 @@ import Home from './Home';
 import Bus from './Bus';
 import BookForm from './BookForm';
 import BookList from './BookList';
+import CardPayment from './CardPayment';
 
 
 
@@ -14,6 +15,7 @@ const Main = () => (
             <Route exact path ='/bus'   component = {Bus}/>
             <Route exact path = '/booklist' component = {BookList}/>
             <Route exact path = '/bookform/:bno/:bprice' component = {BookForm}/>
+            <Route exact path = '/cardpayment/:bno/:bprice' component = {CardPayment}/>
         </Switch>
     </main>
 )

@@ -12,10 +12,12 @@ class BookForm extends Component{
         Total:'',
         busses: '',
         check:'',
-        busno : this.props.match.params.bno
+        busno : this.props.match.params.bno,
+        bprice : this.props.match.params.bprice,
+        date : this.refs.date
     }
     this.getBus = this.getBus.bind(this);
-
+    this.handleChange = this.handleChange.bind(this);
 
 }
 
@@ -23,6 +25,23 @@ class BookForm extends Component{
 
         this.getBus();
     }
+
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+        console.log(event.target.value);
+        let tot;
+       
+
+        
+             tot = (this.state.bprice * event.target.value);
+        
+
+        console.log(this.state.bprice)
+        console.log(tot);
+        this.setState({Total: tot})
+
+      }
     
     getBus(){
       
@@ -51,6 +70,7 @@ class BookForm extends Component{
     
     
     render(){
+        const {Total} = this.state;
         return(
             <div>
               
@@ -74,15 +94,14 @@ class BookForm extends Component{
                     
                 
                 <div className="input-field col s6">
-                    <input id="bticket" type="number" className="validate" required/>
+                    <input id="bticket" type="number" className="validate" required onChange={this.handleChange}/>
                     <label htmlFor="bticket">Number of Tickets</label>
                 </div>
                 
 
                 <label>Total Price</label>
                 <div className="input-field col s12">
-                    
-                    <input disabled  id="disabled" type="text" className="validate"/>
+                <input disabled value={"Your Total : "+Total + " LKR"} id="disabled" type="text" className="validate"/>
 
                   
                     
@@ -90,7 +109,7 @@ class BookForm extends Component{
             </li>
             
           </ul>
-          
+          <Link to={{pathname: `/cardpayment/${this.state.busno}/${this.state.bprice}`, Total, Date  }} ><button className="btn green">Book<i className="material-icons right">send</i></button></Link> &nbsp;
          
           </form>
       </div>
