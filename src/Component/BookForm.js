@@ -11,7 +11,8 @@ class BookForm extends Component{
     this.state = {
         Total:'',
         busses: '',
-        check:''
+        check:'',
+        busno : this.props.match.params.bno
     }
     this.getBus = this.getBus.bind(this);
 
@@ -24,37 +25,26 @@ class BookForm extends Component{
     }
     
     getBus(){
-        const busno = this.props.match.params.bno;
+      
 
         console.log('Mounted')
         db.collection('Buses')
+          .where("bno", "==", "1")
           .get()
-          .then(    snapshot => {
-              const busses = []
-              const check =[]
-              snapshot.forEach( doc =>{
-              
-                  const data = doc.data()
-                  
-                  check.push(data)
-               
-                  busses.push(data)
+          .then(    querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data());
+            console.log(data);
                   
                   
                 
               })
              
-              this.setState({   busses: busses,
-                                 check: check})
-              
-              console.log(snapshot)
-              console.log(check)
-              console.log(this.state.busses.bno)
-              console.log(busno)
               
               
+              
+            
              
-          })
+          
           .catch(   error => console.log(error))
     }
 
@@ -69,19 +59,16 @@ class BookForm extends Component{
           <Link className="btn green darken-3" to  ="/">Back</Link>
 
           
-            <h3>444</h3>
+            <h3>Booking Details</h3>
           <form>
           <ul className="collection">
-            <li className="collection-item"> Book </li>
+            <li className="collection-item">Bus Number : <b><h5>{this.state.busno}</h5></b> </li>
             <li className="collection-item">
                 
                 
+                               
                 <div className="input-field col s6">
-                    <input id="bno" type="number" className="validate" ref="bno" />
-                    <label htmlFor="bno">Bus Number </label>
-                </div>
-                <div className="input-field col s6">
-                    <input id="date" type="date" className="validate" ref="date" />
+                    <input id="date" type="date" className="validate" ref="date"  required/>
                     <label htmlFor="date">Select a Date </label>
                 </div>
                     
@@ -97,7 +84,7 @@ class BookForm extends Component{
                     
                     <input disabled  id="disabled" type="text" className="validate"/>
 
-                     <input disabled id="disabled" type="text" className="validate"/>
+                  
                     
                 </div>
             </li>

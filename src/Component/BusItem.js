@@ -24,7 +24,7 @@ class BusItem extends Component{
                     <p> No of Seats      : {this.state.item.bseat}   </p>
                            </div>
                     <div class="card-action">
-                    <Link to ={`/bookform/${this.state.item.bno}`}>BOOK</Link>
+                    <Link to ={`/bookform/${this.state.item.bno}/${this.state.item.bprice}`}>BOOK</Link>
                        </div>
                    </div>
                    </div>
