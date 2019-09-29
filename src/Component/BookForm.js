@@ -56,14 +56,7 @@ class BookForm extends Component{
                   
                   
                 
-              })
-             
-              
-              
-              
-            
-             
-          
+              })            
           .catch(   error => console.log(error))
     }
 

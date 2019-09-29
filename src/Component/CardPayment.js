@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { db } from '../services/firebase';
+import { NotificationManager } from "react-notifications";
 
 
 class CardPayment extends Component {
@@ -19,6 +21,7 @@ class CardPayment extends Component {
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.sendFeedback = this.sendFeedback.bind(this);
+        this.addingBook = this.addingBook.bind(this);
         console.log(this.state.Total)
         console.log(this.state.bno)
         console.log(this.state.bprice)
@@ -70,7 +73,7 @@ class CardPayment extends Component {
             this.setState({
                 formSubmitted: true
             });
-            
+         
            
         
     }
@@ -93,15 +96,42 @@ class CardPayment extends Component {
                 
             })
             .then(res => {
+                this.addingBook()
                 console.log('MAIL SENT!')
-                alert('Booking confirmed, Check your Mail :)')
-                this.props.history.push('/');
+               
                 this.setState({
                     formEmailSent: true
                 });
             })
             // Handle errors here however you like
             .catch(err => console.error('Failed to send feedback. Error: ', err));
+    }
+
+    addingBook(){ 
+        const data = {
+            uid: new Date().getTime(),
+            fname: this.refs.fname.value,
+            lname: this.refs.lname.value,
+            email: this.refs.email.value,
+            bno: this.state.bno,
+            bprice: this.state.bprice,
+            tno: this.state.tno,
+            Total : this.state.Total
+
+        }
+        db.collection("Bookings")
+          .doc(data.uid.toString())
+          .set(data)
+          .then(() =>{
+            NotificationManager.info("Booking Added Check Your Mail :)", "Success");
+            window.location='/';
+           
+          })
+          .catch(error => {
+            NotificationManager.error(error.message, "Server failed");
+            this.setState({ isSubmitting: false });
+          });
+
     }
 
     
